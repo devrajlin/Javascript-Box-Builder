@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Javascript box builder</title>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+</head>
+<body>
+	<h1 style="text-align:center;">Box Builder</h1>
+	<h3 style="text-align: center;">Start Building</h3>
+	<button style="margin-left: 43%; cursor: pointer; padding:10px 20px;font-size:17px; background-color: green;color: white;" onclick="incrementValue();">Add Box</button>
+	<button class="remove" style="padding:10px 20px; cursor: pointer;font-size:17px; background-color: red;color: white;" onclick="removeClass();">Remove Box</button>
+	
+       <div style="margin-left: 43%;" >
+       	<br/>
+       	<div class="label" id="box_fields">
+            <input type="button"  id="boxes" value="0" style="padding: 10px 20px; display: none; margin-left: 8%;background-color:white;font-size:20px; ">
+         </div>
+         <h1 id="number"></h1>
+         <h3 style="margin-left: 8%; opacity: 0.5;" id="nobox">No Boxes</h3>
+        </div>
+	
+
+</body>
+<script>
+	var room =0;
+	var count = 1;
+	 var value = 0;
+	function incrementValue()
+{
+	document.getElementById("boxes").style.display="block";
+	document.getElementById("nobox").style.display="none";
+	//number in button
+	 var value = parseInt(document.getElementById('boxes').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value++;
+
+    //creating boxes
+    document.getElementById('boxes').value = value;
+	 room++;
+    var objTo = document.getElementById('box_fields')
+    var value = document.createElement("box_fields");
+    value.innerHTML = '<button id="box"> '+room+' </div>';
+    
+    objTo.appendChild(value)
+
+
+    //set color
+   
+     // var property = document.getElementById("");
+     
+        if (room==5) {
+            value.style.backgroundColor = "orange"        
+        }
+        if(room == 10) {
+            value.style.backgroundColor = "orange"
+            
+        }
+        if(room == 15)
+        {
+        	value.style.backgroundColor = "orange"
+        }
+     
+
+//remove boxes
+
+}
+function removeClass(){
+
+	room--;
+	var list = document.getElementById("box_fields");
+    list.removeChild(list.lastChild);
+
+	 var value = parseInt(document.getElementById('boxes').value, 10);
+    value = isNaN(value) ? 0 : value;
+    value--;
+     document.getElementById('boxes').value = value;
+    if (value==0) {
+    	document.getElementById("nobox").style.display="block";
+    	document.getElementById("boxes").style.display="none";
+    }
+   
+
+
+
+    
+   
+
+}
+
+</script>
+</html>
